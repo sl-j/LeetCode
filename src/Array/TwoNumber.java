@@ -29,14 +29,14 @@ public class TwoNumber {
         target = sc.nextInt();
         int[] results = new int[2];
 
-        Map<Integer,Integer> map = new HashMap<>();
+        Map<Integer,Integer> map = new HashMap<>(); //使用哈希表记录数值和其下标
         for(int i = 0;i < nums.length;i++){
-               if(map.containsKey(target-nums[i])){
-                   results[0] = map.get(target - nums[i]);
+               if(map.containsKey(target-nums[i])){  //查找是否存在两数之和等于target，时间复杂度为o(1)
+                   results[0] = map.get(target - nums[i]);//取得另一个数的下标
                    results[1] = i;
                    System.out.println(results[0]+" "+results[1]);
                }
-               map.put(nums[i],i);
+               map.put(nums[i],i);//map初始为null，在遍历中一遍遍插入map中
         }
 
 
