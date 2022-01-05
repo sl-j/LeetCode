@@ -9,7 +9,8 @@ import java.util.Comparator;
 public class MinNumber {
 
     public static void main(String[] args) {
-        System.out.println(minNumber(new int[]{3,30,34,5,9}));
+//        System.out.println(minNumber(new int[]{2,123}));
+        System.out.println("2".compareTo("123"));
     }
 
     public static String minNumber(int[] nums) {
