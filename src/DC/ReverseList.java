@@ -17,7 +17,8 @@ public class ReverseList {
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
-        reverseBetween(head,2,4);
+        head.next.next.next.next.next = new ListNode(6);
+        reverseBetween(head,3,4);
     }
 //    public static ListNode reverseList(ListNode head) {
 //        ListNode pre = null;
