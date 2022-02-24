@@ -1,22 +1,33 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class test {
 
     public static void main(String[] args) {
-        int[] ints = twoSum(new int[]{2, 7, 11, 15}, 9);
-        System.out.println();
+        System.out.println(longestPalindrome("abbd"));
     }
 
-    public static int[] twoSum(int[] nums, int target) {
-        Map<Integer,Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if(map.containsKey(target - nums[i])) {
-                return new int[]{i,map.get(target - nums[i])};
+    public static String longestPalindrome(String s) {
+        if(s.length() < 2) return s;
+
+        int maxLen = 0;
+        int start = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i; j < s.length(); j++) {
+                if( j - i + 1 > maxLen && valid(s,i,j)){
+                    maxLen = j - i +1;
+                    start = i;
+                }
             }
-            map.put(nums[i],i);
         }
-        return new int[]{};
+        return s.substring(start,start + maxLen);
     }
+
+    public static Boolean valid(String s, int start,int end){
+        while (start < end){
+            if(s.charAt(start++) != s.charAt(end--)) return false;
+        }
+        return true;
+    }
+
 }
