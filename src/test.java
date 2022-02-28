@@ -1,33 +1,54 @@
+import org.junit.Test;
+
 import java.util.*;
 
 public class test {
 
-    public static void main(String[] args) {
-        System.out.println(longestPalindrome("abbd"));
-    }
+      public class ListNode {
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     }
 
-    public static String longestPalindrome(String s) {
-        if(s.length() < 2) return s;
+   @Test
+   public void test(){
 
-        int maxLen = 0;
-        int start = 0;
+          ListNode head = new ListNode(1);
+          head.next = new ListNode(2);
+       head.next.next = new ListNode(3);
+       head.next.next.next = new ListNode(4);
+       head.next.next.next.next = new ListNode(5);
 
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = i; j < s.length(); j++) {
-                if( j - i + 1 > maxLen && valid(s,i,j)){
-                    maxLen = j - i +1;
-                    start = i;
-                }
-            }
+       reverseBetween(head,2,4);
+
+   }
+
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if(left == right) return head;
+
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode pre = dummy;
+        for (int i = 0; i < left - 1; i++) {
+            pre = pre.next;
         }
-        return s.substring(start,start + maxLen);
-    }
 
-    public static Boolean valid(String s, int start,int end){
-        while (start < end){
-            if(s.charAt(start++) != s.charAt(end--)) return false;
+        ListNode preNode = null;
+        ListNode cur = pre.next;
+
+        for (int i = left; i <= right; i++) {
+            ListNode tmp = cur.next;
+            cur.next = preNode;
+            preNode = cur;
+            cur = tmp;
         }
-        return true;
+        pre.next.next = cur;
+        pre.next = preNode;
+
+        return dummy.next;
+
     }
 
 }
