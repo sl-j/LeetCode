@@ -4,51 +4,49 @@ import java.util.*;
 
 public class test {
 
-      public class ListNode {
+      public class TreeNode {
       int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     }
+      TreeNode left;
+      TreeNode right;
+      TreeNode() {}
+      TreeNode(int val) { this.val = val; }
+      TreeNode(int val, TreeNode left, TreeNode right) {
+          this.val = val;
+          this.left = left;
+          this.right = right;
+      }
+  }
 
-   @Test
-   public void test(){
+//    public List<Integer> ans = new ArrayList<>();
+//    public List<Integer> inorderTraversal(TreeNode root) {
+//          if(root == null) return new ArrayList<>();
+//          recur(root);
+//          return ans;
+//    }
+//
+//    public void recur(TreeNode root){
+//        if(root == null) return;
+//        recur(root.left);
+//        ans.add(root.val);
+//        recur(root.right);
+//    }
 
-          ListNode head = new ListNode(1);
-          head.next = new ListNode(2);
-       head.next.next = new ListNode(3);
-       head.next.next.next = new ListNode(4);
-       head.next.next.next.next = new ListNode(5);
+        public List<Integer> inorderTraversal(TreeNode root) {
+          if(root == null) return new ArrayList<>();
+          List<Integer> ans = new ArrayList<>();
+          Deque<TreeNode> stack = new LinkedList<>();
 
-       reverseBetween(head,2,4);
+          while (root != null || !stack.isEmpty()){
+              while (root != null){
+                  stack.push(root);
+                  root = root.left;
+              }
 
-   }
-
-    public ListNode reverseBetween(ListNode head, int left, int right) {
-        if(left == right) return head;
-
-        ListNode dummy = new ListNode(-1);
-        dummy.next = head;
-        ListNode pre = dummy;
-        for (int i = 0; i < left - 1; i++) {
-            pre = pre.next;
-        }
-
-        ListNode preNode = null;
-        ListNode cur = pre.next;
-
-        for (int i = left; i <= right; i++) {
-            ListNode tmp = cur.next;
-            cur.next = preNode;
-            preNode = cur;
-            cur = tmp;
-        }
-        pre.next.next = cur;
-        pre.next = preNode;
-
-        return dummy.next;
-
+              root = stack.pop();
+              ans.add(root.val);
+              root = root.right;
+          }
+          return ans;
     }
 
 }

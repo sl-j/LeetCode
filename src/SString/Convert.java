@@ -22,7 +22,7 @@ public class Convert {
 
     @Test
     public void test(){
-        convert("PAYPALISHIRING",3);
+        convert("PAYPALISHIRING", 3);
     }
 
     public String convert(String s, int numRows) {
