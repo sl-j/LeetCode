@@ -3,8 +3,7 @@ package sort;
 
 import DC.BuildTree;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class AddTwoNumbers {
 
@@ -17,6 +16,9 @@ public class AddTwoNumbers {
     }
 
     public static void main(String[] args) {
+
+
+        Scanner sc = new Scanner(System.in);
         ListNode l1 = new ListNode(9);
         ListNode l2 = new ListNode(1);
         l2.next = new ListNode(9);
@@ -58,5 +60,25 @@ public class AddTwoNumbers {
         }
 
         return res.next;
+    }
+
+    public int canAttendMeetings(int[][] intervals) {
+        if(intervals.length == 0) return 0;
+        Arrays.sort(intervals,(int[] o1,int[] o2) -> o1[1] - o2[1]);
+
+        PriorityQueue<Integer> quque = new PriorityQueue<Integer>();
+
+        quque.add(intervals[0][1]);
+
+
+        for(int i = 1;i < intervals.length;i++){
+            int cur = intervals[i][0];
+            while(!quque.isEmpty() && cur >= quque.peek()){
+                quque.poll();
+            }
+            quque.offer(intervals[i][1]);
+        }
+
+        return quque.size();
     }
 }

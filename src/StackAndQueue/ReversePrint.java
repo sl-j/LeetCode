@@ -2,6 +2,7 @@ package StackAndQueue;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class ReversePrint {
     public static class ListNode {
@@ -18,6 +19,7 @@ public class ReversePrint {
             res ) {
             System.out.print(i+" ");
         }
+
 
     }
 

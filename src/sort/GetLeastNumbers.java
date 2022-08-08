@@ -1,15 +1,29 @@
 package sort;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.Scanner;
 
 /**
  * 输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。
  */
 public class GetLeastNumbers {
-    public static void main(String[] args) {
-        getLeastNumbers(new int[]{3,2,1},2);
+    public static void main(String[] args) throws IOException {
+//        getLeastNumbers(new int[]{3,2,1},2);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        char[] chars1 = br.readLine().toLowerCase().toCharArray();
+        char[] chars2 = br.readLine().toLowerCase().toCharArray();
+
+        int count = 0;
+        for(char ch : chars1){
+            if(ch == chars2[0]) count++;
+        }
+
+        System.out.println(count);
     }
     /**
      * 会被嘲笑的解法
