@@ -1,5 +1,8 @@
 package Array;
 
+
+import one.Main;
+
 public class Init
 {
 {
