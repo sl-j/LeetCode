@@ -1,8 +1,12 @@
 package Array;
 
-public enum Singeton {
-    INSTANCE;
-    public static Singeton getSingeton(){
-        return INSTANCE;
+public class Singeton {
+    private static class Singetor{
+        private final static Singeton INSTANCE = new Singeton();
     }
+
+    public static Singeton getSin(){
+        return Singetor.INSTANCE;
+    }
+
 }
