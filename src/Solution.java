@@ -1,48 +1,26 @@
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.LinkedList;
 import org.junit.Test;
 class Solution {
 
 
-
-
-
-
-    public int calculate(String s) {
-        Deque<Integer> stack = new LinkedList<Integer>();
-        char preSign = '+';
-        int num = 0;
-        int n = s.length();
-        for (int i = 0; i < n; ++i) {
-            if (Character.isDigit(s.charAt(i))) {
-                num = num * 10 + s.charAt(i) - '0';
-            }
-            if (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == n - 1) {
-                switch (preSign) {
-                    case '+':
-                        stack.push(num);
-                        break;
-                    case '-':
-                        stack.push(-num);
-                        break;
-                    case '*':
-                        stack.push(stack.pop() * num);
-                        break;
-                    default:
-                        stack.push(stack.pop() / num);
-                }
-                preSign = s.charAt(i);
-                num = 0;
-            }
-        }
-        int ans = 0;
-        while (!stack.isEmpty()) {
-            ans += stack.pop();
-        }
-        return ans;
+    public static void main(String[] args) throws IOException {
+        char chr = 127;
+        int sum = 200;
+        chr += 1;
+        sum += chr;
+        System.out.println(sum);
     }
+
+
+
+
 
 
 }
