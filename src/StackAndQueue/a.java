@@ -1,5 +1,8 @@
 package StackAndQueue;
 
+import java.util.HashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public class a {
     public static void main(String[] args) {
         MyCircularDeque circularDeque = new MyCircularDeque(3); // 设置容量大小为3
@@ -11,7 +14,8 @@ public class a {
         circularDeque.isFull();				        // 返回 true
         circularDeque.deleteLast();			        // 返回 true
         circularDeque.insertFront(4);			        // 返回 true
-        circularDeque.getFront();				// 返回 4
+        circularDeque.getFront();// 返回 4
+//        StringBuilder
 
     }
 }
