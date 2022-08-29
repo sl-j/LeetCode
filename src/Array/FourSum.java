@@ -4,28 +4,35 @@ package Array;
 import java.util.*;
 import java.util.concurrent.ThreadPoolExecutor;
 
-public class FourSum {
+public class FourSum extends Thread{
+    /**
+     * If this thread was constructed using a separate
+     * <code>Runnable</code> run object, then that
+     * <code>Runnable</code> object's <code>run</code> method is called;
+     * otherwise, this method does nothing and returns.
+     * <p>
+     * Subclasses of <code>Thread</code> should override this method.
+     *
+     * @see #start()
+     * @see #stop()
+     * @see #
+     */
+    @Override
+    public void run() {
+        try{
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        System.out.println("run");
+
+    }
+
     public static void main(String[] args) {
+       FourSum fourSum = new FourSum();
+       fourSum.run();
+        System.out.println("main");
     }
-    public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        List<Integer> res = new ArrayList<>();
-        PriorityQueue<Integer> queue = new PriorityQueue<>((o1, o2) -> {
-            if(Math.abs(o1 - x) == Math.abs(o2 - x)) return o2 - o1;
-                else return Math.abs(o2 - x) - Math.abs(o1 - x);
-        });
 
-
-
-        for(int num : arr){
-            queue.offer(num);
-            if(queue.size() > k) queue.poll();
-        }
-
-        while(!queue.isEmpty()){
-            res.add(queue.poll());
-        }
-
-        return res;
-    }
 
 }
